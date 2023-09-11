@@ -2,10 +2,10 @@ const searchIcon = document.querySelector('.fa-search');
 const search = document.querySelector('.search');
 const text = document.querySelector('.searchText');
 
-searchIcon.onclick = function () {
+searchIcon.addEventListener('click', function () {
   search.classList.toggle('active');
   text.classList.toggle('active');
-};
+});
 
 const quotes = [
   'I often think that the night is more alive and more richly colored than the day',
@@ -17,11 +17,12 @@ const quotes = [
 ];
 
 const textQuotes = document.querySelector('.quotes__show-title');
+const btn = document.querySelector('.quotes__btn');
 
-const generate = () => {
-  let quote = Math.floor(Math.random() * quotes.length);
+btn.addEventListener('click', function () {
+  const quote = Math.floor(Math.random() * quotes.length);
   textQuotes.innerHTML = quotes[quote];
-};
+});
 
 // const images = document.querySelector('.painting__card');
 // let index = 0;
@@ -36,31 +37,34 @@ const generate = () => {
 
 // slider(index);
 
-const carousel = document.querySelector('.painting__cards');
+const carousel = document.querySelectorAll('.painting__cards');
 
 let isDragging = false,
   startX,
   startScrollLeft;
 
-const dragStart = (e) => {
+const dragStart = (e, el) => {
   isDragging = true;
-  carousel.classList.add('dragging');
+  el.classList.add('dragging');
   startX = e.pageX;
-  startScrollLeft = carousel.scrollLeft;
+  startScrollLeft = el.scrollLeft;
 };
 
-const dragging = (e) => {
+const dragging = (e, el) => {
   if (!isDragging) return;
   e.preventDefault();
   let positionDiff = e.pageX - startX;
-  carousel.scrollLeft = startScrollLeft - positionDiff;
+  el.scrollLeft = startScrollLeft - positionDiff;
 };
 
-const dragStop = () => {
+const dragStop = (el) => {
   isDragging = false;
-  carousel.classList.remove('dragging');
+  el.classList.remove('dragging');
 };
 
-carousel.addEventListener('mousedown', dragStart);
-carousel.addEventListener('mousemove', dragging);
-carousel.addEventListener('mouseup', dragStop);
+carousel.forEach((el) => {
+  el.addEventListener('mousedown', (e) => dragStart(e, el));
+  el.addEventListener('mousemove', (e) => dragging(e, el));
+  el.addEventListener('mouseup', (e) => dragStop(e, el));
+  el.addEventListener('mouseover', (e) => dragStop(e, el));
+});
