@@ -17,12 +17,13 @@
     <title>Van-Gogh</title>
   </head>
   <body>
-    <header>
-      <div class="header">
+    <header class="header">
         <div class="container">
           <ul class="nav">
-            <li><a href="#painting">paintings</a></li>
-            <li><a href="#quotes">quotes</a></li>
+            <li class="nav__link">
+              <a href="#painting">paintings</a>
+              <a href="#quotes">quotes</a>
+            </li>
             <li>
               <div class="search">
                 <input type="text" class="searchText" placeholder="Search..." />
@@ -30,10 +31,29 @@
               </div>
             </li>
           </ul>
-          <h1>van gogh <br />paintings</h1>
+          <h1 class="title-top">van gogh</h1>
+          <h1 class="title-bottom">paintings</h1>
         </div>
-      </div>
     </header>
+
+    <section class="bio">
+      <div class="container">
+        <div class="biography">
+          <div class="biography__img">
+            <img class="bio1" src="./img/bio1.png" alt="">
+            <img class="bio2" src="./img/bio2.png" alt="">
+            <img class="bio3" src="./img/bio3.png" alt="">
+          </div>
+          <p class="biography__text">
+            Vincent van Gogh was a Dutch painter who is regarded as one of the greatest artists of all time. Born in 1853, he had a difficult childhood and suffered from mental illness throughout his life. Despite these challenges, van Gogh is known for his prolific output of over 2,000 paintings, drawings, and sketches, which feature vibrant colors and vivid brushstrokes.
+            <br><br>
+            During his lifetime, van Gogh did not receive much recognition for his work. He struggled financially and was often forced to sell his paintings for very little money. Despite this, his work was influential for generations of artists who followed him, and his reputation has continued to grow over the years.
+          </p>
+          <a href="" class="biography__arrow"><img src="./img/bio-arrow.svg" alt=""></a>
+        </div>
+        
+      </div>
+    </section>
 
     <section class="painting__paris" id='painting'>
       <div class="container">
